@@ -16,11 +16,14 @@ function addTask(){
 
      }   
     
-    inputBox.value="";
+  inputBox.value="";
     save();
 }
 
 // for checking and removing the task
+//When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+
 
 task.addEventListener("click", function(e){
     if(e.target.tagName=== "LI"){
@@ -33,16 +36,31 @@ task.addEventListener("click", function(e){
     }
 },false);
 
-// For saving the data
 
-function save(){
-    localStorage.setItem("data",task.innerHTML);
+
+function save() {
+    let tasks = [...task.children].map(li => li.firstChild.textContent.trim());
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// for showing the data
+// Function to load tasks
+function loadTasks() {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach(taskValue => {
+        let li = document.createElement("li");
+        li.textContent = taskValue;
 
-function show(){
-    task.innerHTML=localStorage.getItem("data");
+        let span = document.createElement("span");
+        span.textContent = "x";
+        span.onclick = function () {
+            li.remove();
+            save();
+        };
+
+        li.appendChild(span);
+        task.appendChild(li);
+    });
 }
 
-show();
+// Load tasks on page load
+loadTasks();
