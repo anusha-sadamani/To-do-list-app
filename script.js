@@ -1,42 +1,53 @@
-const inputBox=document.getElementById("field");
-const task=document.getElementById("task-list");
+const inputBox = document.getElementById("field");
+const task = document.getElementById("task-list");
 
-// function for adding the task
-function addTask(){
-    if(inputBox.value==''){
-        alert("Please, enter the task!");
+// Function for adding the task
+function addTask() {
+    let taskValue = inputBox.value.trim(); // Trim to remove extra spaces
+
+    if (taskValue === '') {
+        alert("Please enter a task!");
+        return;
     }
-     else {
-        let li=document.createElement("li");
-        li.innerHTML=inputBox.value;
-        task.appendChild(li);
-        let span=document.createElement("span");
-        span.innerHTML="x";
-        li.appendChild(span);
 
-     }   
+    // Get existing tasks
+    let existingTasks = [...task.children].map(li => li.firstChild.textContent.trim());
+
+    // Check for duplicate
+    if (existingTasks.includes(taskValue)) {
+        alert("Task already exists!");
+        inputBox.value = ""; // Clear input box
+        return;
+    }
+
+    // Create new task element
+    let li = document.createElement("li");
+    li.textContent = taskValue;
     
-  inputBox.value="";
+    let span = document.createElement("span");
+    span.textContent = "x";
+    span.onclick = function () {
+        li.remove();
+        save();
+    };
+
+    li.appendChild(span);
+    task.appendChild(li);
+    
+    inputBox.value = ""; // Clear input box
     save();
 }
 
-// for checking and removing the task
-//When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
-
-
-
-task.addEventListener("click", function(e){
-    if(e.target.tagName=== "LI"){
+// For checking and removing the task
+task.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
         save();
-    }
-    else if(e.target.tagName==="SPAN"){
+    } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
         save();
     }
-},false);
-
-
+}, false);
 
 function save() {
     let tasks = [...task.children].map(li => li.firstChild.textContent.trim());
@@ -46,6 +57,7 @@ function save() {
 // Function to load tasks
 function loadTasks() {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
     tasks.forEach(taskValue => {
         let li = document.createElement("li");
         li.textContent = taskValue;
@@ -61,6 +73,7 @@ function loadTasks() {
         task.appendChild(li);
     });
 }
+
 
 // Load tasks on page load
 loadTasks();
