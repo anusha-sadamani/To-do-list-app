@@ -18,13 +18,11 @@ function addTask(){
       let taskValue =inputBox.value;
       if(taskValue===""){
         alert("Please, Enter a Task!");
-        return;
       }
-      let existingTask=[...task.children].map(li=>li.firstChild.textContent.trim());
+      let existingTask=[...task.children].map(li=>li.firstChild.textContent);
       if(existingTask.includes(taskValue)){
         alert("Task already exists!");
         inputBox.value="";
-        return;
       }
      let li =createTaskElement(taskValue);
      task.appendChild(li);
@@ -49,18 +47,18 @@ task.addEventListener("click",function(e){
 // function for saving the task
 
 function save(){
-    let tasks=[...task.children].map(li=>li.firstChild.textContent.trim());
+    let tasks=[...task.children];
     localStorage.setItem("tasks",JSON.stringify(tasks));
 }
 
 // function for show items
 
 function loadTasks(){
-   let tasks=JSON.parse(localStorage.getItem("tasks")) || [];
+   let tasks=JSON.parse(localStorage.getItem("tasks")) ;
    tasks.forEach(taskValue => { 
     let li=createTaskElement(taskValue);
     task.appendChild(li);
     
    });
 }
-loadTasks();
+loadTasks(); 
