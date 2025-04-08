@@ -15,7 +15,7 @@ function createTaskElement(taskValue){
 //function for addTask
 
 function addTask(){
-      let taskValue =inputBox.value.trim();
+      let taskValue =inputBox.value;
       if(taskValue===""){
         alert("Please, Enter a Task!");
         return;
