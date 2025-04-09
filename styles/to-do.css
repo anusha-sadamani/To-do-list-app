@@ -1,82 +1,81 @@
-*{
-    margin: 0%;
-    padding: 0%;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing:border-box;
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
-.container{
-    width: 100%;
-    min-height:100vh;
-    background: url('images/list2.jpg') no-repeat center center fixed;
-    background-size: cover;
-    padding: 10px;
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: url("../images/img1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding: 10px;
 }
-.to-do{
-    width: 100%;
-    max-width: 540px;
-    background: #fff;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
+.to-do {
+  width: 100%;
+  max-width: 540px;
+  background: #fff;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
 }
-.to-do h2{
-    color:rgb(214, 163, 95);
-    display:flex;
-    align-items:center;
-    margin-bottom: 10px;
+.to-do h2 {
+  color: rgb(214, 163, 95);
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.row{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    background:rgb(231, 228, 228) ;
-    border-radius: 30px;
-    padding-left: 20px;
-    margin-bottom: 25px;
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(231, 228, 228);
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-bottom: 25px;
 }
-#field{
-    flex: 1;
-    border:none;
-    outline: none;
-    background: transparent;
-    padding:10px;
-    text-emphasis-color: black;
+#field {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  text-emphasis-color: black;
 }
-#add{
-    border:none;
-    outline: none;
-    padding:  16px 50px;
-    background: rgb(2, 56, 56);
-    color: rgb(252, 246, 246);
-    font-size: 16px;
-    cursor:pointer;
-    border-radius: 40px;
-
+#add {
+  border: none;
+  outline: none;
+  padding: 16px 50px;
+  background: rgb(2, 56, 56);
+  color: rgb(252, 246, 246);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
 }
-ul li{
-    list-style:circle;
-    font-size:19px;
-    padding:10px;
-    user-select:none;
-    cursor:pointer;
-    position: relative;
+ul li {
+  list-style: circle;
+  font-size: 19px;
+  padding: 10px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
 }
-ul li.checked{
-    color:gray;
-    text-decoration: line-through;
+ul li.checked {
+  color: gray;
+  text-decoration: line-through;
 }
-ul li span{
-    position: absolute;
-    right:0;
-    top:5px;
-    height:40px;
-    width: 40px;
-    font-size: 22px;
-    color:black;
-    line-height: 40px;
-    text-align:center;
+ul li span {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  height: 40px;
+  width: 40px;
+  font-size: 22px;
+  color: black;
+  line-height: 40px;
+  text-align: center;
 }
-ul li span:hover{
-    background: dimgrey;
+ul li span:hover {
+  background: dimgrey;
 }
